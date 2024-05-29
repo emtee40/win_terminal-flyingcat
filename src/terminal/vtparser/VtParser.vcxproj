@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{80D21939-E9FD-4997-B2B2-5255124F6896}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>VtParser</RootNamespace>
+    <ProjectName>VtParser</ProjectName>
+    <TargetName>VtParser</TargetName>
+    <ConfigurationType>Application</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)src\common.build.pre.props" />
+  <Import Project="$(SolutionDir)src\common.nugetversions.props" />
+  <ItemGroup>
+    <ClCompile Include="precomp.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="shared.cpp" />
+    <ClCompile Include="v1\Parser_v1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DataSource.h" />
+    <ClInclude Include="defs.hpp" />
+    <ClInclude Include="dispatch.h" />
+    <ClInclude Include="precomp.h" />
+    <ClInclude Include="shared.h" />
+    <ClInclude Include="v1\Parser_v1.h" />
+    <ClInclude Include="v2\OutputEngine.h" />
+    <ClInclude Include="v2\Parser_v2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\types\lib\types.vcxproj">
+      <Project>{18d09a24-8240-42d6-8cb6-236eee820263}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\parser\lib\parser.vcxproj">
+      <Project>{3ae13314-1939-4dfa-9c14-38ca0834050c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="v1\codegen.ps1">
+      <FileType>Document</FileType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='AuditMode|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='AuditMode|Win32'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Fuzzing|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Fuzzing|Win32'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='AuditMode|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='AuditMode|ARM64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Fuzzing|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Fuzzing|ARM64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='AuditMode|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='AuditMode|x64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Fuzzing|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Fuzzing|x64'">ClInclude</OutputItemType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='AuditMode|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Fuzzing|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='AuditMode|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Fuzzing|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='AuditMode|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Fuzzing|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="v2\codegen.ps1">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='AuditMode|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='AuditMode|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='AuditMode|Win32'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Fuzzing|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Fuzzing|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Fuzzing|Win32'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='AuditMode|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='AuditMode|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='AuditMode|ARM64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Fuzzing|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Fuzzing|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Fuzzing|ARM64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='AuditMode|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='AuditMode|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='AuditMode|x64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Fuzzing|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Fuzzing|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Fuzzing|x64'">ClInclude</OutputItemType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pwsh -nop -noni -c ".\%(Identity) &gt; (New-Item '%(RelativeDir)Generated Files\ParserGenerated.g.h' -Force)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)\Generated Files\ParserGenerated.g.h</Outputs>
+      <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ClInclude</OutputItemType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <!-- Careful reordering these. Some default props (contained in these files) are order sensitive. -->
+  <Import Project="$(SolutionDir)src\common.build.post.props" />
+  <Import Project="$(SolutionDir)src\common.build.tests.props" />
+  <Import Project="$(SolutionDir)src\common.nugetversions.targets" />
+</Project>
